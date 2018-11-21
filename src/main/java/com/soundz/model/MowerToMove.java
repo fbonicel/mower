@@ -2,18 +2,15 @@ package com.soundz.model;
 
 import java.util.stream.Stream;
 
-public class MowerToMove {
+public final class MowerToMove {
 
-    private Mower mower;
-    private String instructions;
+    public final Mower mower;
+    public final String instructions;
+
 
     public MowerToMove(Mower mower, String instructions) {
-        this.mower = mower;
+        this.mower = new Mower(mower.position,mower.orientation);
         this.instructions = instructions;
-    }
-
-    public Mower getMower() {
-        return mower;
     }
 
     // Convert IntStream to Stream<Character>

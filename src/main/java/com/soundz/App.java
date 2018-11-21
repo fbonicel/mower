@@ -24,15 +24,15 @@ public class App {
         List<Position> occupiedPositions = new ArrayList<>();
         Path path = Paths.get(args[0]);
         List<String> lines;
-        // Sanitize lines
         try {
+            // Sanitize lines
             lines = Files
                     .lines(path)
                     .filter(line -> !line.isEmpty())
                     .map(line -> line.trim())
                     .collect(Collectors.toList());
         } catch (IOException ex) {
-            throw new IllegalArgumentException("Input file path is not correct.");
+            throw new IllegalArgumentException("Passed input file path is not correct.");
         }
 
         if (lines.size() == 0)
@@ -42,7 +42,7 @@ public class App {
 
         // Loop over Mowers to Move
         InputDataExtractor.linesToMowersToMove(lines).stream().forEach(mtm -> {
-            Mower oldMover = mtm.getMower();
+            Mower oldMover = mtm.mower;
 
             // Need to check if start position of old Mower  is valid
             oldMover.validatePosition(lawn, occupiedPositions)
@@ -52,7 +52,7 @@ public class App {
             Mower movedMower = mtm.getInstructionsStream()
                     .reduce(oldMover, (o, instruction) -> o.move(instruction).validatePosition(lawn, occupiedPositions).orElse(o), (o, newMower) -> newMower);
             // Add the moved Mower position to the occupiedPositions list
-            occupiedPositions.add(movedMower.getPosition());
+            occupiedPositions.add(movedMower.position);
             System.out.println(movedMower);
         });
     }

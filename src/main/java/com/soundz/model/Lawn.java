@@ -1,5 +1,8 @@
 package com.soundz.model;
 
+/**
+ *  The Lawn where mowers move.
+ */
 public final class Lawn {
 
     public final int width;

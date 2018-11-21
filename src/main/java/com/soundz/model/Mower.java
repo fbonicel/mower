@@ -3,13 +3,16 @@ package com.soundz.model;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ *  The Mower
+ */
 public final class Mower implements Mobile {
 
-    private Position position;
-    private Orientation orientation;
+    public final Position position;
+    public final Orientation orientation;
 
     public Mower(Position position, Orientation orientation) {
-        this.position = new Position(position.getX(), position.getY());
+        this.position = new Position(position.x, position.y);
         this.orientation = Orientation.valueOf(orientation.name());
     }
 
@@ -62,16 +65,16 @@ public final class Mower implements Mobile {
         Mower newMower;
         switch (orientation) {
             case N:
-                newMower = new Mower(new Position(position.getX(), position.getY() + 1), orientation);
+                newMower = new Mower(new Position(position.x, position.y + 1), orientation);
                 break;
             case S:
-                newMower = new Mower(new Position(position.getX(), position.getY() - 1), orientation);
+                newMower = new Mower(new Position(position.x, position.y - 1), orientation);
                 break;
             case E:
-                newMower = new Mower(new Position(position.getX() + 1, position.getY()), orientation);
+                newMower = new Mower(new Position(position.x + 1, position.y), orientation);
                 break;
             case W:
-                newMower = new Mower(new Position(position.getX() - 1, position.getY()), orientation);
+                newMower = new Mower(new Position(position.x - 1, position.y), orientation);
                 break;
             default:
                 newMower = this;
@@ -100,19 +103,13 @@ public final class Mower implements Mobile {
         return newMower;
     }
 
-    public Position getPosition(){
-        return position;
-    }
-
-
     public Optional<Mower> validatePosition(Lawn lawn, List<Position> occupiedPositions) {
         return (insideLawn(lawn) && !occupiedPositions.contains(position)) ? Optional.of(this) : Optional.empty();
     }
 
     private Boolean insideLawn(Lawn lawn) {
-        return position.getX() >= 0 && position.getY() >= 0 && position.getX() <= lawn.width && position.getY() <= lawn.height;
+        return position.x >= 0 && position.y >= 0 && position.x <= lawn.width && position.y <= lawn.height;
     }
-
 
 
     @Override
@@ -131,7 +128,6 @@ public final class Mower implements Mobile {
 
     @Override
     public int hashCode() {
-        //TODO: KNOW HOW TO EXPLAIN
         int result = 17;
 
         result = 31 * result + orientation.name().hashCode();

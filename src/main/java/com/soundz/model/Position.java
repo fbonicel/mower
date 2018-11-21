@@ -2,20 +2,22 @@ package com.soundz.model;
 
 public final class Position {
 
-    private int x;
-    private int y;
+    public final int x;
+    public final int y;
 
     public Position(int x, int y) {
         this.y = y;
         this.x = x;
     }
 
-    public int getX() {
-        return x;
-    }
+    @Override
+    public int hashCode() {
+        int result = 17;
 
-    public int getY() {
-        return y;
+        result = 31 * result + (x ^ (x >>> 32));
+        result = 31 * result + (y ^ (y >>> 32));
+
+        return result;
     }
 
 
@@ -31,7 +33,7 @@ public final class Position {
 
         Position p = (Position) o;
 
-        return x == p.getX() && y == p.getY();
+        return x == p.x && y == p.y;
     }
 
     @Override
