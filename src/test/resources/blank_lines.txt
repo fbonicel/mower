@@ -1,0 +1,14 @@
+5 5
+
+
+
+
+1 2 N
+
+LFLFLFLFF
+3 3 E
+
+FFRFFRFRRF
+
+
+
