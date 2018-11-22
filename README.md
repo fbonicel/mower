@@ -6,14 +6,14 @@ Repo : https://github.com/fbonicel/mower
 
 ### From your IDE ###
 
-* The **App** class
-
-*Note*
+*Prerequisites*
 
 You have to add the input file path to the program arguments.
-Sample input.txt available in src/main/resources directory : /path/to/mower/src/main/resources/input.txt
+Sample input.txt available in src/main/resources directory `/path/to/mower/src/main/resources/input.txt`
 
-* The tests (UT+IT) under src/test/java directory
+
+* The **App** class
+* The tests (UT+IT) under `src/test/java` directory
 
 ### From the jar file ###
 
