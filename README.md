@@ -7,7 +7,13 @@ Repo : https://github.com/fbonicel/mower
 ### From your IDE ###
 
 * The **App** class
-* The tests (UT+IT) under /test/java directory
+
+*Note*
+
+You have to add the input file path to the program arguments.
+Sample input.txt available in src/main/resources directory : /path/to/mower/src/main/resources/input.txt
+
+* The tests (UT+IT) under src/test/java directory
 
 ### From the jar file ###
 
@@ -18,7 +24,7 @@ mvn clean package
 
 ### Run ###
 ```
-java -jar target/mower-1.0-SNAPSHOT.jar [path/to/input/file]
+java -jar target/mower-1.0-SNAPSHOT.jar [path/to/input/file.txt]
 ```
 
 ### Goal ###
