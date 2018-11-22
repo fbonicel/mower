@@ -1,20 +1,22 @@
 # Mower Technical Test #
 
+Repo : https://github.com/fbonicel/mower
+
 ## How to run ? ##
 
 ### From your IDE ###
 
 * The **App** class
-* The tests (UT+IT) under /test/java
+* The tests (UT+IT) under /test/java directory
 
 ### From the jar file ###
 
-### Compilation ###
+### Package ###
 ```
 mvn clean package
 ```
 
-### Running ###
+### Run ###
 ```
 java -jar target/mower-1.0-SNAPSHOT.jar [path/to/input/file]
 ```

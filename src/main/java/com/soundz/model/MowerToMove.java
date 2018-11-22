@@ -2,6 +2,9 @@ package com.soundz.model;
 
 import java.util.stream.Stream;
 
+/**
+ * The MowerToMove class is just a container for Mower and Instructions
+ */
 public final class MowerToMove {
 
     public final Mower mower;

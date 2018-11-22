@@ -29,7 +29,7 @@ public class App {
             lines = Files
                     .lines(path)
                     .filter(line -> !line.isEmpty())
-                    .map(line -> line.trim())
+                    .map(String::trim)
                     .collect(Collectors.toList());
         } catch (IOException ex) {
             throw new IllegalArgumentException("Passed input file path is not correct.");
@@ -46,11 +46,17 @@ public class App {
 
             // Need to check if start position of old Mower  is valid
             oldMover.validatePosition(lawn, occupiedPositions)
-                    .orElseThrow(() -> new IllegalArgumentException(String.format("Sorry, the start position of your Mower %s is not valid. Already taken or outside of Lawn.", oldMover)));
+                    .orElseThrow(() ->
+                            new IllegalArgumentException(String.format("Sorry, the start position of your Mower %s is not valid. Already taken or outside of Lawn.", oldMover)
+                            )
+                    );
 
             // Init reduce method with old Mower and apply instructions
             Mower movedMower = mtm.getInstructionsStream()
-                    .reduce(oldMover, (o, instruction) -> o.move(instruction).validatePosition(lawn, occupiedPositions).orElse(o), (o, newMower) -> newMower);
+                    .reduce(oldMover, (o, instruction) -> o
+                                                        .move(instruction)
+                                                        .validatePosition(lawn, occupiedPositions)
+                                                        .orElse(o), (o, newMower) -> newMower);
             // Add the moved Mower position to the occupiedPositions list
             occupiedPositions.add(movedMower.position);
             System.out.println(movedMower);
