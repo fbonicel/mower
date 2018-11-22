@@ -32,7 +32,7 @@ public class App {
                     .map(String::trim)
                     .collect(Collectors.toList());
         } catch (IOException ex) {
-            throw new IllegalArgumentException("Passed input file path is not correct.");
+            throw new IllegalArgumentException(String.format("Passed input file path %s is not correct.",path));
         }
 
         if (lines.size() == 0)
